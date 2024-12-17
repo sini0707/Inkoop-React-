@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Even and Odd Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 150px;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: blue;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>Check Even and Odd Numbers</h2>
+  <label for="numberInput">Enter a number:</label><br>
+  <input type="number" id="numberInput" placeholder="Type a number" oninput="checkNumber()" />
+  <p id="result"></p>
+
+  <script>
+    function checkNumber() {
+      const inputField = document.getElementById("numberInput");
+      const resultDisplay = document.getElementById("result");
+
+    
+      const value = parseInt(inputField.value);
+
+  
+      if (isNaN(value)) {
+        resultDisplay.textContent = "";
+        return;
+      }
+
+      if (value < 0) {
+        resultDisplay.innerHTML = "<span class='error'>Enter a positive value</span>";
+        return;
+      }
+
+  
+      if (value % 2 === 0) {
+   
+        const nextEven = [value + 2, value + 4, value + 6];
+        resultDisplay.textContent = `Next 3 even numbers: ${nextEven.join(", ")}`;
+      } else {
+      
+        const nextOdd = [value + 2, value + 4, value + 6];
+        resultDisplay.textContent = `Next 3 odd numbers: ${nextOdd.join(", ")}`;
+      }
+    }
+  </script>
+</body>
+</html>
